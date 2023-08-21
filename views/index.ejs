@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Booking App</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Appointment Booking App</h1>
+  
+  <form action="/appointments" method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="tel" name="phone" placeholder="Phone" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="datetime-local" name="date" required>
+    <button type="submit">Book Appointment</button>
+  </form>
+  
+  <h2>Appointments</h2>
+  <ul>
+    <% appointments.forEach(appointment => { %>
+      <li class="appointment">
+        <strong><%= appointment.name %></strong>
+        <p><%= appointment.phone %></p>
+        <p><%= appointment.email %></p>
+        <p><%= appointment.date %></p>
+        <a href="/appointments/delete/<%= appointment.id %>">Delete</a>
+      </li>
+    <% }) %>
+  </ul>
+  
+  <a href="/appointments/json">View as JSON</a>
+</body>
+</html>
